@@ -1,11 +1,11 @@
-// import { applyMiddleware, createStore } from 'redux';
+// import { applyMiddleware, createStore, combineReducers } from 'redux';
 // import thunk from 'redux-thunk';
 // import logger from 'redux-logger';
 // import promise from 'redux-promise';
 import isPromise from 'is-promise'; // 判断是不是promise类型
 import { isFSA } from 'flux-standard-action'; // 判断是不是标准的action{type: xx, payload: xx}
 
-import { createStore, applyMiddleware } from '../kredux/';
+import { createStore, applyMiddleware, combineReducers } from '../kredux/';
 function countReducer(state = 0, action) {
     switch (action.type) {
         case 'ADD':
@@ -16,9 +16,21 @@ function countReducer(state = 0, action) {
             return state;
     }
 }
+function numReducer(state = { num: 0 }, { type, payload }) {
+    switch (type) {
+        case 'ADD2':
+            return {
+                ...state,
+                num: state.num + payload,
+            };
+        default:
+            return state;
+    }
+}
 
 const store = createStore(
-    countReducer,
+    // countReducer,
+    combineReducers({ num: numReducer, count: countReducer }),
     applyMiddleware(thunk, logger, promise)
 );
 export default store;
