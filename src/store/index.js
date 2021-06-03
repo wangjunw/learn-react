@@ -6,7 +6,7 @@ import isPromise from 'is-promise'; // 判断是不是promise类型
 import { isFSA } from 'flux-standard-action'; // 判断是不是标准的action{type: xx, payload: xx}
 
 import { createStore, applyMiddleware, combineReducers } from '../kredux/';
-function countReducer(state = 0, action) {
+export function countReducer(state = 0, action) {
     switch (action.type) {
         case 'ADD':
             return state + 1;
