@@ -1,16 +1,5 @@
 import React from 'react';
 import { Component } from 'react';
-// import {
-//     BrowserRouter as Router,
-//     Route,
-//     Link,
-//     Switch,
-//     useParams,
-//     useRouteMatch,
-//     useHistory,
-//     useLocation,
-//     withRouter,
-// } from 'react-router-dom';
 import {
     BrowserRouter as Router,
     Route,
@@ -22,8 +11,20 @@ import {
     useLocation,
     withRouter,
     Prompt,
-} from '../kreact-router';
-
+} from 'react-router-dom';
+// import {
+//     BrowserRouter as Router,
+//     Route,
+//     Link,
+//     Switch,
+//     useParams,
+//     useRouteMatch,
+//     useHistory,
+//     useLocation,
+//     withRouter,
+//     Prompt,
+// } from '../kreact-router';
+import PrivateRoute from '../routes/PrivateRoute';
 import HomePage from './routesPages/HomePage';
 import LoginPage from './routesPages/LoginPage';
 import UserPage from './routesPages/UserPage';
@@ -42,17 +43,27 @@ export default function ReactRouterPage() {
                 <Link to="/">首页</Link>
                 <Link to="/user">用户中心</Link>
                 <Link to="/login">登录</Link>
-                <Link to="/product/123">商品</Link>
+                {/* <Link to="/product/123">商品</Link> */}
                 <Switch>
-                    <Route exact path="/" component={HomePage}></Route>
-                    <Route path="/user" component={UserPage}></Route>
+                    {/* <Route exact path="/" component={HomePage}></Route> */}
+                    <PrivateRoute
+                        exact
+                        path="/"
+                        component={HomePage}
+                    ></PrivateRoute>
+                    <PrivateRoute
+                        path="/user"
+                        component={UserPage}
+                    ></PrivateRoute>
+
+                    {/* <Route path="/user" component={UserPage}></Route> */}
                     <Route path="/login" component={LoginPage}></Route>
 
                     {/* <Route path="/product/:id" component={Product}></Route> */}
-                    <Route
+                    {/* <Route
                         path="/product/:id"
                         render={() => <Product />}
-                    ></Route>
+                    ></Route> */}
                     <Route component={_404Page}></Route>
                 </Switch>
             </Router>

@@ -5,8 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import store from './store';
-// import { Provider } from 'react-redux';
-import { Provider } from './kreact-redux';
+import { Provider } from 'react-redux';
+// import { Provider } from './kreact-redux';
 ReactDOM.render(
     <Provider store={store}>
         <App />

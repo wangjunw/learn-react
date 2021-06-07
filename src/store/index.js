@@ -16,12 +16,18 @@ export function countReducer(state = 0, action) {
             return state;
     }
 }
-function numReducer(state = { num: 0 }, { type, payload }) {
+function numReducer(state = { num: 0, isLogin: false }, { type, payload }) {
     switch (type) {
         case 'ADD2':
             return {
                 ...state,
                 num: state.num + payload,
+            };
+        case 'LOGIN':
+        case 'LOGOUT':
+            return {
+                ...state,
+                isLogin: payload,
             };
         default:
             return state;
