@@ -47,6 +47,7 @@ export default function ReactRouterPage() {
                     <Route exact path="/" component={HomePage}></Route>
                     <Route path="/user" component={UserPage}></Route>
                     <Route path="/login" component={LoginPage}></Route>
+
                     {/* <Route path="/product/:id" component={Product}></Route> */}
                     <Route
                         path="/product/:id"

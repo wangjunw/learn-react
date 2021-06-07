@@ -12,7 +12,6 @@ export default class Router extends Component {
         };
         // 监听location变化
         props.history.listen((location) => {
-            console.log(location);
             this.setState({ location });
         });
     }
